@@ -1,33 +1,43 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+backend/*.log
+backend/logs/
+
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-secret.properties
+backend/src/main/resources/application-dev.properties
+
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.eslintcache
+
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.production.local
+
+.idea/
 *.iml
+*.iws
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
 .vscode/
+
+.DS_Store
+Thumbs.db
+
+*.class
+*.jar
+*.war
+*.ear
+
+*.tmp
+*.bak
+*.swp
+*.swo
+

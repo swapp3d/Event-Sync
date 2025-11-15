@@ -36,34 +36,92 @@ It uses Hugging Face for sentiment scoring and OpenRouter for AI‑generated eve
 - Fetch‑based API communication
 
 ## Installation and Running
+
 ### Requirements
 - Java 17  
-- Node.js + npm  
-- Internet connection for AI API calls  
+- Node.js and npm  
+- Internet connection (required for OpenRouter and Hugging Face API calls)
 
-### Backend
-1. Navigate to the backend folder  
-2. Configure your `.env` or environment variables:  
-   - `HF_API_TOKEN`  
-   - `OPENROUTER_API_KEY`  
-3. Run:  
-   ```
-   mvn spring-boot:run
-   ```
-4. The backend starts at:  
-   `http://localhost:8080`
+---
 
-### Frontend
-1. Navigate to the `frontend` folder  
-2. Install dependencies:  
+## Project Setup in IntelliJ IDEA
+
+Because this repository contains two separate modules (backend + frontend), IntelliJ must be configured manually after cloning.
+
+### 1. Open the project
+- In IntelliJ, select **File → Open**  
+- Choose the **project root folder** (the folder that contains `/backend` and `/frontend`)
+
+---
+
+### 2. Import the Backend Module (Maven)
+1. Open the Project Tool Window  
+2. Switch the view to **Project Files**  
+3. Navigate to:
    ```
-   npm install
+   backend/pom.xml
    ```
-3. Start the dev server:  
+4. Right-click → **Add as Maven Project**
+
+---
+
+### 3. Import the Frontend Module (Node/Vite)
+1. Navigate to:
    ```
-   npm run dev
+   frontend/package.json
    ```
-4. Open the app in your browser (Vite shows the local URL)
+2. Right-click → **Add as npm Module**  
+   (or: File → Project Structure → Modules → + → Import Module → select `package.json`)
+
+---
+
+## Setting Environment Variables (Windows PowerShell)
+
+### Backend requires two API keys:
+- HF_API_TOKEN (Hugging Face)
+- OPENROUTER_API_KEY (OpenRouter)
+
+### Set them in PowerShell:
+```powershell
+setx HF_API_TOKEN "your_huggingface_token_here"
+setx OPENROUTER_API_KEY "your_openrouter_api_key_here"
+```
+
+### Verify they were saved:
+```powershell
+echo $env:HF_API_TOKEN
+echo $env:OPENROUTER_API_KEY
+```
+
+---
+
+## Running the Backend (Spring Boot)
+
+```powershell
+cd backend
+mvn spring-boot:run
+```
+
+Backend runs at:
+```
+http://localhost:8080
+```
+
+---
+
+## Running the Frontend (React + Vite)
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Vite will show a local URL such as:
+```
+http://localhost:5173
+```
+
 
 ## Challenges
 - Hugging Face’s summarization models produced inconsistent results, requiring a switch to OpenRouter for summaries  
@@ -71,7 +129,7 @@ It uses Hugging Face for sentiment scoring and OpenRouter for AI‑generated eve
 - Ensuring sentiment classification behaved consistently across long and short feedback entries  
 - UI adjustments to avoid layout overflow in summary pages
 
-##Issues
+## Issues
 - Wrong identification of the feedback's neutrality, which is often mistook by Hugging Face sentiment model for positive 
 
 ## Future Improvements
